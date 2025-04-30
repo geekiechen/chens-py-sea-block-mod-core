@@ -46,7 +46,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                     name = "early-kerogen",
                     order = "a",
                     category = "hydroclassifier",
-                    energy_required = 4,
+                    energy_required = 2,
                     ingredients = {
                         {type = "item", name = "sludge", amount = 1},
                         {type = "fluid", name = "carbolic-oil", amount = 15}
@@ -64,7 +64,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                     name = "early-kerogen",
                     order = "a",
                     category = "hydroclassifier",
-                    energy_required = 4,
+                    energy_required = 2,
                     ingredients = {
                         {type = "item", name = "sludge", amount = 1},
                         {type = "fluid", name = "water", amount = 50}
@@ -82,7 +82,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-iron-ore",
                 order = "a",
                 category = "hydroclassifier",
-                energy_required = 4,
+                energy_required = 2,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "water", amount = 50}
@@ -96,7 +96,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-copper-ore",
                 order = "a",
                 category = "hydroclassifier",
-                energy_required = 4,
+                energy_required = 2,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "water", amount = 50}
@@ -110,7 +110,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-raw-coal",
                 order = "a",
                 category = "hydroclassifier",
-                energy_required = 4,
+                energy_required = 2,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "water", amount = 50}
@@ -124,7 +124,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-stone",
                 order = "a",
                 category = "hydroclassifier",
-                energy_required = 4,
+                energy_required = 2,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "water", amount = 50}
@@ -144,7 +144,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-aluminium-ore",
                 order = "a",
                 category = "flotation",
-                energy_required = 6,
+                energy_required = 4,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "coal-gas", amount = 50}
@@ -158,7 +158,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-tin-ore",
                 order = "a",
                 category = "flotation",
-                energy_required = 6,
+                energy_required = 4,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "steam", amount = 50}
@@ -172,7 +172,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-zinc-ore",
                 order = "a",
                 category = "flotation",
-                energy_required = 6,
+                energy_required = 4,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "aromatics", amount = 20}
@@ -186,7 +186,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-lead-ore",
                 order = "a",
                 category = "flotation",
-                energy_required = 6,
+                energy_required = 4,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "acetylene", amount = 50}
@@ -200,7 +200,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-titanium-ore",
                 order = "a",
                 category = "flotation",
-                energy_required = 6,
+                energy_required = 4,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "acetylene", amount = 20}
@@ -214,7 +214,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-nickel-ore",
                 order = "a",
                 category = "flotation",
-                energy_required = 6,
+                energy_required = 4,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "syngas", amount = 20}
@@ -228,7 +228,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-chromium-ore",
                 order = "a",
                 category = "flotation",
-                energy_required = 6,
+                energy_required = 4,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "syngas", amount = 20}
@@ -248,7 +248,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-raw-borax",
                 order = "a",
                 category = "leaching",
-                energy_required = 8,
+                energy_required = 6,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "syngas", amount = 15}
@@ -262,7 +262,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-quartz-ore",
                 order = "a",
                 category = "leaching",
-                energy_required = 8,
+                energy_required = 6,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "coal-gas", amount = 20}
@@ -276,7 +276,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-rare-earth-ore",
                 order = "a",
                 category = "leaching",
-                energy_required = 8,
+                energy_required = 6,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "naphtha", amount = 50}
@@ -290,7 +290,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-uranium-ore",
                 order = "a",
                 category = "leaching",
-                energy_required = 8,
+                energy_required = 6,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "sulfuric-acid", amount = 40}
@@ -304,7 +304,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-antimonium-ore",
                 order = "a",
                 category = "leaching",
-                energy_required = 8,
+                energy_required = 6,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "syngas", amount = 35}
@@ -318,7 +318,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-niobium-ore",
                 order = "a",
                 category = "leaching",
-                energy_required = 8,
+                energy_required = 6,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "refsyngas", amount = 30}
@@ -332,7 +332,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-molybdenum-ore",
                 order = "a",
                 category = "leaching",
-                energy_required = 8,
+                energy_required = 6,
                 ingredients = {
                     {type = "item", name = "sludge", amount = 1},
                     {type = "fluid", name = "gasoline", amount = 35}
