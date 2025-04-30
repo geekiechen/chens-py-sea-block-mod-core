@@ -1,0 +1,12 @@
+{
+    "name": "chens-py-sea-block-mod-core",
+    "version": "0.1.0",
+    "title": "Chens Pyanodon Sea Block Mod (core)",
+    "author": "GeekieChen",
+    "dependencies": [
+        "chens-modpack-py-auxiliary-others"
+    ],
+    "description": "这个是我做的 Pyanodon 海块模组 (核心)。",
+    "factorio_version": "2.0",
+    "license": "MIT"
+}
