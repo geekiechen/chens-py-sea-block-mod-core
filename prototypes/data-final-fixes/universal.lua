@@ -493,10 +493,6 @@ if mods["pycoalprocessing"] then
         table.insert(data.raw.technology["automation-science-pack"].effects,
                      {type = "unlock-recipe", recipe = "burner-inserter"})
         table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "hydroclassifier-mk00"})
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "evaporator-mk00"})
-        table.insert(data.raw.technology["automation-science-pack"].effects,
                      {type = "unlock-recipe", recipe = "wooden-chest"})
         table.insert(data.raw.technology["automation-science-pack"].effects,
                      {type = "unlock-recipe", recipe = "small-electric-pole"})
@@ -535,6 +531,10 @@ if mods["pycoalprocessing"] then
 
         table.insert(data.raw.technology["steam-power"].effects,
                      {type = "unlock-recipe", recipe = "biofactory-mk00"})
+        table.insert(data.raw.technology["steam-power"].effects,
+                     {type = "unlock-recipe", recipe = "hydroclassifier-mk00"})
+        table.insert(data.raw.technology["steam-power"].effects,
+                     {type = "unlock-recipe", recipe = "evaporator-mk00"})
     end
 
     -- 修复 niobium 的问题
