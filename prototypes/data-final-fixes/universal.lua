@@ -15,6 +15,28 @@ if mods["pyalienlife"] then
         }
     end
 
+    -- 修复 moss-farm-mk01 的问题
+    if data.raw["assembling-machine"]["moss-farm-mk01"] then
+        data.raw["assembling-machine"]["moss-farm-mk01"].energy_source = {
+            type = "burner",
+            fuel_categories = {"chemical"},
+            fuel_inventory_size = 1,
+            burnt_inventory_size = 1,
+            burnt_result = "ash"
+        }
+    end
+
+    -- 修复 seaweed-crop-mk01 的问题
+    if data.raw["assembling-machine"]["seaweed-crop-mk01"] then
+        data.raw["assembling-machine"]["seaweed-crop-mk01"].energy_source = {
+            type = "burner",
+            fuel_categories = {"chemical"},
+            fuel_inventory_size = 1,
+            burnt_inventory_size = 1,
+            burnt_result = "ash"
+        }
+    end
+
     -- 修复 biofactory-mk01 的问题
     if data.raw["assembling-machine"]["biofactory-mk01"] then
         data.raw["assembling-machine"]["biofactory-mk01"].crafting_speed = 2
@@ -179,8 +201,7 @@ if mods["pyalienlife"] then
     -- 修复 moss-farm-mk01 的问题
     if data.raw.recipe["moss-farm-mk01"] then
         for i = #data.raw.recipe["moss-farm-mk01"].ingredients, 1, -1 do
-            local ingredient =
-                data.raw.recipe["moss-farm-mk01"].ingredients[i]
+            local ingredient = data.raw.recipe["moss-farm-mk01"].ingredients[i]
             if ingredient.name == "aluminium-plate" then
                 table.remove(data.raw.recipe["moss-farm-mk01"].ingredients, i)
                 break
