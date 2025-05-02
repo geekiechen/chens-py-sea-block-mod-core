@@ -175,6 +175,18 @@ if mods["pyalienlife"] then
             end
         end
     end
+
+    -- 修复 moss-farm-mk01 的问题
+    if data.raw.recipe["moss-farm-mk01"] then
+        for i = #data.raw.recipe["moss-farm-mk01"].ingredients, 1, -1 do
+            local ingredient =
+                data.raw.recipe["moss-farm-mk01"].ingredients[i]
+            if ingredient.name == "aluminium-plate" then
+                table.remove(data.raw.recipe["moss-farm-mk01"].ingredients, i)
+                break
+            end
+        end
+    end
 end
 
 -- 修复 pyalternativeenergy 的问题
