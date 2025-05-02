@@ -174,6 +174,12 @@ if mods["pyalienlife"] then
                      {type = "item", name = "biofactory-mk00", amount = 1})
     end
 
+    -- 修复 Moss-1 的问题
+    if data.raw.recipe["Moss-1"] then
+        table.insert(data.raw.recipe["Moss-1"].ingredients,
+                     {type = "item", name = "seaweed", amount = 10})
+    end
+
     -- 修复 fwf-mk01 的问题
     if data.raw.recipe["fwf-mk01"] then
         for i = #data.raw.recipe["fwf-mk01"].ingredients, 1, -1 do
@@ -483,6 +489,11 @@ if mods["pycoalprocessing"] then
             end
         end
 
+        data.raw.technology["automation-science-pack"].research_trigger = {
+            type = "craft-item",
+            item = "log",
+            count = 50
+        }
         data.raw.technology["automation-science-pack"].prerequisites = {
             "log-processing"
         }

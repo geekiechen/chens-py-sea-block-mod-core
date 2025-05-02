@@ -371,7 +371,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-seaweed",
                 order = "a",
                 category = "biofactory",
-                energy_required = 100,
+                energy_required = 150,
                 ingredients = {
                     {type = "item", name = "organic-waste", amount = 10},
                     {type = "item", name = "ash", amount = 10},
@@ -440,7 +440,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-log",
                 order = "a",
                 category = "biofactory",
-                energy_required = 160,
+                energy_required = 200,
                 ingredients = {
                     {type = "item", name = "moss", amount = 10},
                     {type = "item", name = "soil", amount = 10},
@@ -456,7 +456,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-saps",
                 order = "a",
                 category = "biofactory",
-                energy_required = 160,
+                energy_required = 200,
                 ingredients = {
                     {type = "item", name = "moss", amount = 10},
                     {type = "item", name = "organic-waste", amount = 10},
