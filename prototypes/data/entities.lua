@@ -137,13 +137,6 @@ if mods["chens-modpack-py-auxiliary-others"] then
                     tint = {r = 0.4, g = 0.4, b = 0.4, a = 1}
                 }
             }
-            flotation_cell_mk00_entity.energy_source.type = "burner"
-            flotation_cell_mk00_entity.energy_source.fuel_categories = {
-                "chemical"
-            }
-            flotation_cell_mk00_entity.energy_source.fuel_inventory_size = 1
-            flotation_cell_mk00_entity.energy_source.burnt_inventory_size = 1
-            flotation_cell_mk00_entity.energy_source.burnt_result = "ash"
             flotation_cell_mk00_entity.minable = {
                 mining_time = 1,
                 result = "flotation-cell-mk00"
@@ -259,13 +252,6 @@ if mods["chens-modpack-py-auxiliary-others"] then
                     tint = {r = 0.4, g = 0.4, b = 0.4, a = 1}
                 }
             }
-            leaching_station_mk00_entity.energy_source.type = "burner"
-            leaching_station_mk00_entity.energy_source.fuel_categories = {
-                "chemical"
-            }
-            leaching_station_mk00_entity.energy_source.fuel_inventory_size = 1
-            leaching_station_mk00_entity.energy_source.burnt_inventory_size = 1
-            leaching_station_mk00_entity.energy_source.burnt_result = "ash"
             leaching_station_mk00_entity.minable = {
                 mining_time = 1,
                 result = "leaching-station-mk00"

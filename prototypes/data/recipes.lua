@@ -365,43 +365,104 @@ if mods["chens-modpack-py-auxiliary-others"] then
 
     -- biofactory
     if data.raw["recipe-category"]["biofactory"] then
-        data:extend({ -- 注册原木
+        data:extend({ -- 注册海藻
+            {
+                type = "recipe",
+                name = "early-seaweed",
+                order = "a",
+                category = "biofactory",
+                energy_required = 50,
+                ingredients = {
+                    {type = "item", name = "organic-waste", amount = 10},
+                    {type = "item", name = "ash", amount = 5},
+                    {type = "item", name = "sludge", amount = 10},
+                    {type = "fluid", name = "water", amount = 200}
+                },
+                results = {{type = "item", name = "seaweed", amount = 1}},
+                main_product = "seaweed",
+                enabled = false
+            }, -- 注册鱼
+            {
+                type = "recipe",
+                name = "early-fish",
+                order = "a",
+                category = "biofactory",
+                energy_required = 150,
+                ingredients = {
+                    {type = "item", name = "seaweed", amount = 20},
+                    {type = "item", name = "organic-waste", amount = 10},
+                    {type = "fluid", name = "water", amount = 1000}
+                },
+                results = {
+                    {
+                        type = "item",
+                        name = "fish",
+                        amount = 1,
+                        probability = 0.1
+                    }
+                },
+                main_product = "fish",
+                enabled = false
+            }, -- 注册苔藓
+            {
+                type = "recipe",
+                name = "early-moss",
+                order = "a",
+                category = "biofactory",
+                energy_required = 80,
+                ingredients = {
+                    {type = "item", name = "seaweed", amount = 8},
+                    {type = "fluid", name = "water", amount = 200}
+                },
+                results = {{type = "item", name = "moss", amount = 4}},
+                main_product = "moss",
+                enabled = false
+            }, -- 注册二氧化碳
+            {
+                type = "recipe",
+                name = "early-carbon-dioxide",
+                order = "a",
+                category = "biofactory",
+                energy_required = 15,
+                ingredients = {
+                    {type = "item", name = "organic-waste", amount = 10},
+                    {type = "fluid", name = "water", amount = 100}
+                },
+                results = {
+                    {type = "fluid", name = "carbon-dioxide", amount = 50}
+                },
+                main_product = "carbon-dioxide",
+                enabled = false
+            }, -- 注册原木
             {
                 type = "recipe",
                 name = "early-log",
                 order = "a",
                 category = "biofactory",
-                energy_required = 20,
-                ingredients = {{type = "fluid", name = "water", amount = 200}},
-                results = {
-                    {type = "item", name = "log", amount = 1},
-                    {
-                        type = "item",
-                        name = "saps",
-                        amount = 1,
-                        probability = 0.1
-                    }
+                energy_required = 180,
+                ingredients = {
+                    {type = "item", name = "moss", amount = 10},
+                    {type = "item", name = "soil", amount = 10},
+                    {type = "item", name = "organic-waste", amount = 10},
+                    {type = "fluid", name = "water", amount = 200}
                 },
+                results = {{type = "item", name = "log", amount = 1}},
                 main_product = "log",
                 enabled = false
-            }, -- 注册海藻和鱼
+            }, -- 注册树脂
             {
                 type = "recipe",
-                name = "starting-seaweed",
+                name = "early-saps",
                 order = "a",
                 category = "biofactory",
-                energy_required = 20,
-                ingredients = {{type = "fluid", name = "water", amount = 200}},
-                results = {
-                    {type = "item", name = "seaweed", amount = 1},
-                    {
-                        type = "item",
-                        name = "fish",
-                        amount = 1,
-                        probability = 0.05
-                    }
+                energy_required = 160,
+                ingredients = {
+                    {type = "item", name = "moss", amount = 10},
+                    {type = "item", name = "organic-waste", amount = 5},
+                    {type = "fluid", name = "water", amount = 100}
                 },
-                main_product = "seaweed",
+                results = {{type = "item", name = "saps", amount = 1}},
+                main_product = "saps",
                 enabled = false
             }
         })
@@ -409,30 +470,15 @@ if mods["chens-modpack-py-auxiliary-others"] then
 
     -- nursery
     if data.raw["recipe-category"]["nursery"] then
-        data:extend({ -- 注册苔藓
+        data:extend({ -- 注册原生花卉
             {
                 type = "recipe",
-                name = "starting-moss",
+                name = "early-native-flora",
                 order = "a",
                 category = "nursery",
                 energy_required = 20,
                 ingredients = {
-                    {type = "item", name = "seaweed", amount = 1},
-                    {type = "item", name = "stone", amount = 5},
-                    {type = "fluid", name = "water", amount = 400}
-                },
-                results = {{type = "item", name = "moss", amount = 3}},
-                main_product = "moss",
-                enabled = false
-            }, -- 注册原生花卉
-            {
-                type = "recipe",
-                name = "starting-native-flora",
-                order = "a",
-                category = "nursery",
-                energy_required = 20,
-                ingredients = {
-                    {type = "item", name = "seaweed", amount = 1},
+                    {type = "item", name = "moss", amount = 1},
                     {type = "item", name = "soil", amount = 5},
                     {type = "fluid", name = "water", amount = 400}
                 },
