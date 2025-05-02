@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.4
+Date: 2025-05-03
+  Changes:
+    - Adjusted recipe: early-seaweed.
+    - Adjusted recipe: early-moss.
+    - Adjusted recipe: early-log.
+    - Adjusted recipe: early-fish.
+    - Adjusted recipe: early-saps.
+    - Adjusted recipe: early-carbon-dioxide.
+
+    - Fixed technology: wood-processing.
+    - Fixed technology: soil-washing.
+
+    - Adjusted english localization.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.3
 Date: 2025-05-03
   Changes:

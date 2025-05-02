@@ -371,10 +371,10 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-seaweed",
                 order = "a",
                 category = "biofactory",
-                energy_required = 50,
+                energy_required = 100,
                 ingredients = {
                     {type = "item", name = "organic-waste", amount = 10},
-                    {type = "item", name = "ash", amount = 5},
+                    {type = "item", name = "ash", amount = 10},
                     {type = "item", name = "sludge", amount = 10},
                     {type = "fluid", name = "water", amount = 200}
                 },
@@ -390,7 +390,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 energy_required = 150,
                 ingredients = {
                     {type = "item", name = "seaweed", amount = 20},
-                    {type = "item", name = "organic-waste", amount = 10},
+                    {type = "item", name = "organic-waste", amount = 20},
                     {type = "fluid", name = "water", amount = 1000}
                 },
                 results = {
@@ -398,7 +398,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                         type = "item",
                         name = "fish",
                         amount = 1,
-                        probability = 0.1
+                        probability = 0.05
                     }
                 },
                 main_product = "fish",
@@ -409,12 +409,13 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-moss",
                 order = "a",
                 category = "biofactory",
-                energy_required = 80,
+                energy_required = 200,
                 ingredients = {
-                    {type = "item", name = "seaweed", amount = 8},
-                    {type = "fluid", name = "water", amount = 200}
+                    {type = "item", name = "seaweed", amount = 10},
+                    {type = "fluid", name = "water", amount = 100},
+                    {type = "fluid", name = "carbon-dioxide", amount = 100}
                 },
-                results = {{type = "item", name = "moss", amount = 4}},
+                results = {{type = "item", name = "moss", amount = 1}},
                 main_product = "moss",
                 enabled = false
             }, -- 注册二氧化碳
@@ -423,7 +424,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-carbon-dioxide",
                 order = "a",
                 category = "biofactory",
-                energy_required = 15,
+                energy_required = 10,
                 ingredients = {
                     {type = "item", name = "organic-waste", amount = 10},
                     {type = "fluid", name = "water", amount = 100}
@@ -439,7 +440,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 name = "early-log",
                 order = "a",
                 category = "biofactory",
-                energy_required = 180,
+                energy_required = 160,
                 ingredients = {
                     {type = "item", name = "moss", amount = 10},
                     {type = "item", name = "soil", amount = 10},
@@ -458,7 +459,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 energy_required = 160,
                 ingredients = {
                     {type = "item", name = "moss", amount = 10},
-                    {type = "item", name = "organic-waste", amount = 5},
+                    {type = "item", name = "organic-waste", amount = 10},
                     {type = "fluid", name = "water", amount = 100}
                 },
                 results = {{type = "item", name = "saps", amount = 1}},

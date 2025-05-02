@@ -79,7 +79,6 @@ if mods["pyalienlife"] then
                     effect.recipe == "wood-seeds" or effect.recipe ==
                     "wood-seedling" or effect.recipe == "tree") then
                 table.remove(data.raw.technology["wood-processing"].effects, i)
-                break
             end
         end
     end
@@ -157,13 +156,13 @@ if mods["pyalienlife"] then
                      {type = "unlock-recipe", recipe = "early-saps"})
     end
 
-    -- 修复 soil-washer 的问题
-    if data.raw.technology["soil-washer"] then
-        for i = #data.raw.technology["soil-washer"].effects, 1, -1 do
-            local effect = data.raw.technology["soil-washer"].effects[i]
+    -- 修复 soil-washing 的问题
+    if data.raw.technology["soil-washing"] then
+        for i = #data.raw.technology["soil-washing"].effects, 1, -1 do
+            local effect = data.raw.technology["soil-washing"].effects[i]
             if effect.type == "unlock-recipe" and
                 (effect.recipe == "muddy-sludge" or effect.recipe == "washer") then
-                table.remove(data.raw.technology["soil-washer"].effects, i)
+                table.remove(data.raw.technology["soil-washing"].effects, i)
             end
         end
     end
