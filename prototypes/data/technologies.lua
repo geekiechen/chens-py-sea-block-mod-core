@@ -18,7 +18,11 @@ data:extend({
         name = "moss-processing",
         icon = "__pyalienlifegraphics__/graphics/icons/moss.png",
         prerequisites = {},
-        research_trigger = {type = "craft-item", item = "seaweed", count = 50},
+        research_trigger = {
+            type = "craft-item",
+            item = "biofactory-mk00",
+            count = 1
+        },
         effects = {},
         order = "a"
     }, -- 注册 log-processing

@@ -55,8 +55,7 @@ if mods["chens-py-sea-block-mod"] then
     if data.raw.recipe["landfill"] then
         data.raw.recipe["landfill"].ingredients = {
             {type = "item", name = "stone", amount = 5},
-            {type = "item", name = "ash", amount = 10},
-            {type = "item", name = "sludge", amount = 20}
+            {type = "item", name = "ash", amount = 10}
         }
     end
 end

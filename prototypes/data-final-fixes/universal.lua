@@ -26,9 +26,9 @@ if mods["pyalienlife"] then
         }
     end
 
-    -- 修复 seaweed-crop-mk01 的问题
-    if data.raw["assembling-machine"]["seaweed-crop-mk01"] then
-        data.raw["assembling-machine"]["seaweed-crop-mk01"].energy_source = {
+    -- 修复 botanical-nursery 的问题
+    if data.raw["assembling-machine"]["botanical-nursery"] then
+        data.raw["assembling-machine"]["botanical-nursery"].energy_source = {
             type = "burner",
             fuel_categories = {"chemical"},
             fuel_inventory_size = 1,
@@ -121,22 +121,8 @@ if mods["pyalienlife"] then
 
     -- 修复 seaweed-mk01 的问题
     if data.raw.technology["seaweed-mk01"] then
-        data.raw.technology["seaweed-mk01"].prerequisites = {"steam-power"}
-        data.raw.technology["seaweed-mk01"].unit = nil
-        data.raw.technology["seaweed-mk01"].research_trigger = {
-            type = "craft-item",
-            item = "biofactory-mk00",
-            count = 1
-        }
-
         table.insert(data.raw.technology["seaweed-mk01"].effects,
                      {type = "unlock-recipe", recipe = "early-seaweed"})
-        table.insert(data.raw.technology["seaweed-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "burner-mining-drill"})
-        table.insert(data.raw.technology["seaweed-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "soil-extractor-mk01"})
-        table.insert(data.raw.technology["seaweed-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "extract-limestone-01"})
     end
 
     -- 修复 moss-mk01 的问题
@@ -174,30 +160,12 @@ if mods["pyalienlife"] then
                      {type = "item", name = "biofactory-mk00", amount = 1})
     end
 
-    -- 修复 Moss-1 的问题
-    if data.raw.recipe["Moss-1"] then
-        table.insert(data.raw.recipe["Moss-1"].ingredients,
-                     {type = "item", name = "seaweed", amount = 10})
-    end
-
     -- 修复 fwf-mk01 的问题
     if data.raw.recipe["fwf-mk01"] then
         for i = #data.raw.recipe["fwf-mk01"].ingredients, 1, -1 do
             local ingredient = data.raw.recipe["fwf-mk01"].ingredients[i]
             if ingredient.name == "steel-plate" then
                 table.remove(data.raw.recipe["fwf-mk01"].ingredients, i)
-                break
-            end
-        end
-    end
-
-    -- 修复 seaweed-crop-mk01 的问题
-    if data.raw.recipe["seaweed-crop-mk01"] then
-        for i = #data.raw.recipe["seaweed-crop-mk01"].ingredients, 1, -1 do
-            local ingredient =
-                data.raw.recipe["seaweed-crop-mk01"].ingredients[i]
-            if ingredient.name == "tin-plate" then
-                table.remove(data.raw.recipe["seaweed-crop-mk01"].ingredients, i)
                 break
             end
         end
@@ -510,15 +478,6 @@ if mods["pycoalprocessing"] then
 
     -- 修复 coal-processing-1 的问题
     if data.raw.technology["coal-processing-1"] then
-        for i = #data.raw.technology["coal-processing-1"].effects, 1, -1 do
-            local effect = data.raw.technology["coal-processing-1"].effects[i]
-            if effect.type == "unlock-recipe" and effect.recipe ==
-                "extract-limestone-01" then
-                table.remove(data.raw.technology["coal-processing-1"].effects, i)
-                break
-            end
-        end
-
         table.insert(data.raw.technology["coal-processing-1"].effects,
                      {type = "unlock-recipe", recipe = "early-raw-coal"})
         table.insert(data.raw.technology["coal-processing-1"].effects,
@@ -557,6 +516,10 @@ if mods["pycoalprocessing"] then
     if data.raw.technology["moss-processing"] then
         table.insert(data.raw.technology["moss-processing"].effects,
                      {type = "unlock-recipe", recipe = "soil"})
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "burner-mining-drill"})
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "soil-extractor-mk01"})
     end
 
     -- 修复 steel-processing 的问题
@@ -719,7 +682,7 @@ end
 
 -- 修复 moss-processing 的问题
 if data.raw.technology["moss-processing"] then
-    data.raw.technology["moss-processing"].prerequisites = {"seaweed-mk01"}
+    data.raw.technology["moss-processing"].prerequisites = {"steam-power"}
 
     table.insert(data.raw.technology["moss-processing"].effects,
                  {type = "unlock-recipe", recipe = "early-moss"})

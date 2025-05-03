@@ -411,7 +411,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 category = "biofactory",
                 energy_required = 200,
                 ingredients = {
-                    {type = "item", name = "seaweed", amount = 10},
+                    {type = "item", name = "soil", amount = 10},
                     {type = "fluid", name = "water", amount = 100},
                     {type = "fluid", name = "carbon-dioxide", amount = 100}
                 },
