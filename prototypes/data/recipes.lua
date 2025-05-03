@@ -374,8 +374,8 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 energy_required = 150,
                 ingredients = {
                     {type = "item", name = "organic-waste", amount = 10},
-                    {type = "item", name = "ash", amount = 10},
-                    {type = "item", name = "sludge", amount = 10},
+                    {type = "item", name = "ash", amount = 2},
+                    {type = "item", name = "sludge", amount = 2},
                     {type = "fluid", name = "water", amount = 200}
                 },
                 results = {{type = "item", name = "seaweed", amount = 1}},
@@ -398,7 +398,7 @@ if mods["chens-modpack-py-auxiliary-others"] then
                         type = "item",
                         name = "fish",
                         amount = 1,
-                        probability = 0.05
+                        probability = 0.2
                     }
                 },
                 main_product = "fish",
