@@ -1,16 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.4.1
-Date: 2025-05-04
-  Changes:
-    - Made some balance adjustments.
----------------------------------------------------------------------------------------------------
 Version: 0.4.0
 Date: 2025-05-04
   Changes:
-    - [bobtech]:
-      - Adjusted recipe: bob-burner-generator.
-      - Adjusted recipe: bob-burner-lab.
-      - Adjusted technology: bob-electricity.
+    - [chens-modpack-py-auxiliary-others]:
+      - [bobtech]:
+        - Adjusted recipe: bob-burner-lab.
+        - Adjusted technology: bob-electricity.
+        - Adjusted technology: automation-science-pack.
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.1
 Date: 2025-05-04
