@@ -687,7 +687,7 @@ if mods["bobtech"] then
             local effect = data.raw.technology["bob-steam-engine-1"].effects[i]
             if effect.type == "unlock-recipe" then
                 table.remove(data.raw.technology["bob-steam-engine-1"].effects,
-                i)
+                             i)
             end
         end
 
