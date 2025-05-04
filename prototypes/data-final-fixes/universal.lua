@@ -490,8 +490,7 @@ if mods["pycoalprocessing"] then
             local effect = data.raw.technology["steam-power"].effects[i]
             if effect.type == "unlock-recipe" and
                 (effect.recipe == "inductor1-2" or effect.recipe == "pipe" or
-                    effect.recipe == "pipe-to-ground" or effect.recipe ==
-                    "small-electric-pole") then
+                    effect.recipe == "pipe-to-ground") then
                 table.remove(data.raw.technology["steam-power"].effects, i)
             end
         end
@@ -642,6 +641,58 @@ if mods["wood-logistics"] then
     -- 修复 wood-transport-belt 的问题
     if data.raw.recipe["wood-transport-belt"] then
         data.raw.recipe["wood-transport-belt"].enabled = false
+    end
+end
+
+-- 修复 bobtech 的问题
+if mods["bobtech"] then
+    -- 修复科技的问题
+    -- 修复 bob-electricity 的问题
+    if data.raw.technology["bob-electricity"] then
+        for i = #data.raw.technology["bob-electricity"].effects, 1, -1 do
+            local effect = data.raw.technology["bob-electricity"].effects[i]
+            if effect.type == "unlock-recipe" then
+                table.remove(data.raw.technology["bob-electricity"].effects, i)
+            end
+        end
+
+        if next(data.raw.technology["bob-electricity"].effects or {}) == nil then
+            for _, tech in pairs(data.raw.technology) do
+                if tech.prerequisites and
+                    table.contains(tech.prerequisites, "bob-electricity") then
+                    for i, prerequisite in ipairs(tech.prerequisites) do
+                        if prerequisite == "bob-electricity" then
+                            table.remove(tech.prerequisites, i)
+                            break
+                        end
+                    end
+
+                    for _, prerequisite in ipairs(
+                                               data.raw.technology["bob-electricity"]
+                                                   .prerequisites or {}) do
+                        if not table.contains(tech.prerequisites, prerequisite) then
+                            table.insert(tech.prerequisites, prerequisite)
+                        end
+                    end
+                end
+            end
+
+            data.raw.technology["bob-electricity"] = nil
+        end
+    end
+
+    -- 修复 automation-science-pack 的问题
+    if data.raw.technology["automation-science-pack"] then
+        table.insert(data.raw.technology["automation-science-pack"].effects,
+                     {type = "unlock-recipe", recipe = "bob-burner-generator"})
+        table.insert(data.raw.technology["automation-science-pack"].effects,
+                     {type = "unlock-recipe", recipe = "bob-burner-lab"})
+    end
+
+    -- 修复配方的问题
+    -- 修复 bob-burner-lab 的问题
+    if data.raw.recipe["bob-burner-lab"] then
+        data.raw.recipe["bob-burner-lab"].enabled = false
     end
 end
 
