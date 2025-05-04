@@ -681,12 +681,53 @@ if mods["bobtech"] then
         end
     end
 
+    -- 修复 bob-steam-engine-1 的问题
+    if data.raw.technology["bob-steam-engine-1"] then
+        for i = #data.raw.technology["bob-steam-engine-1"].effects, 1, -1 do
+            local effect = data.raw.technology["bob-steam-engine-1"].effects[i]
+            if effect.type == "unlock-recipe" then
+                table.remove(data.raw.technology["bob-steam-engine-1"].effects,
+                i)
+            end
+        end
+
+        if next(data.raw.technology["bob-steam-engine-1"].effects or {}) == nil then
+            for _, tech in pairs(data.raw.technology) do
+                if tech.prerequisites and
+                    table.contains(tech.prerequisites, "bob-steam-engine-1") then
+                    for i, prerequisite in ipairs(tech.prerequisites) do
+                        if prerequisite == "bob-steam-engine-1" then
+                            table.remove(tech.prerequisites, i)
+                            break
+                        end
+                    end
+
+                    for _, prerequisite in ipairs(
+                                               data.raw.technology["bob-steam-engine-1"]
+                                                   .prerequisites or {}) do
+                        if not table.contains(tech.prerequisites, prerequisite) then
+                            table.insert(tech.prerequisites, prerequisite)
+                        end
+                    end
+                end
+            end
+
+            data.raw.technology["bob-steam-engine-1"] = nil
+        end
+    end
+
     -- 修复 automation-science-pack 的问题
     if data.raw.technology["automation-science-pack"] then
         table.insert(data.raw.technology["automation-science-pack"].effects,
                      {type = "unlock-recipe", recipe = "bob-burner-generator"})
         table.insert(data.raw.technology["automation-science-pack"].effects,
                      {type = "unlock-recipe", recipe = "bob-burner-lab"})
+    end
+
+    -- 修复 steam-power 的问题
+    if data.raw.technology["steam-power"] then
+        table.insert(data.raw.technology["steam-power"].effects,
+                     {type = "unlock-recipe", recipe = "steam-engine"})
     end
 
     -- 修复配方的问题

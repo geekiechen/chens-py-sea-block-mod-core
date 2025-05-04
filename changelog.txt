@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.1
+Date: 2025-05-04
+  Changes:
+    - [chens-modpack-py-auxiliary-others]:
+      - [bobtech]:
+        - Adjusted technology: steam-power.
+        - Adjusted technology: bob-steam-engine-1.
+---------------------------------------------------------------------------------------------------
 Version: 0.4.0
 Date: 2025-05-04
   Changes:
