@@ -1,5 +1,26 @@
 -- Copyright (c) 2025 GeekieChen
 -- 此项目遵循 MIT 许可证，详见 LICENSE 文件。
+-- 修复设置的问题
+if settings.startup["enable-hard-mode"].value then
+    -- 注册配方
+    -- crafting
+    if data.raw["recipe-category"]["crafting"] then
+        data:extend({ -- 注册原生花卉
+            {
+                type = "recipe",
+                name = "gravel-to-stone",
+                order = "a",
+                category = "crafting",
+                energy_required = 2,
+                ingredients = {{type = "item", name = "gravel", amount = 4}},
+                results = {{type = "item", name = "stone", amount = 1}},
+                main_product = "stone",
+                enabled = false
+            }
+        })
+    end
+end
+
 -- 修复模组的问题
 -- 修复 chens-modpack-py-auxiliary-others 的问题
 if mods["chens-modpack-py-auxiliary-others"] then

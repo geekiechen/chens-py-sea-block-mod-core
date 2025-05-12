@@ -6,5 +6,11 @@ script.on_event(defines.events.on_research_finished, function(event)
         for _, player in pairs(game.connected_players) do
             player.insert {name = "hydroclassifier-mk00", count = 1}
         end
+
+        if settings.startup["enable-hard-mode"].value then
+            for _, player in pairs(game.connected_players) do
+                player.insert {name = "washer", count = 1}
+            end
+        end
     end
 end)
