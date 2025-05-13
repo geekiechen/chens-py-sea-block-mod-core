@@ -5,14 +5,37 @@ if settings.startup["enable-hard-mode"].value then
     -- 注册配方
     -- crafting
     if data.raw["recipe-category"]["crafting"] then
-        data:extend({ -- 注册原生花卉
+        data:extend({ -- 注册石矿
             {
                 type = "recipe",
                 name = "gravel-to-stone",
                 order = "a",
                 category = "crafting",
-                energy_required = 2,
-                ingredients = {{type = "item", name = "gravel", amount = 4}},
+                energy_required = 6,
+                ingredients = {
+                    {type = "item", name = "gravel", amount = 4},
+                    {type = "item", name = "ash", amount = 4}
+                },
+                results = {{type = "item", name = "stone", amount = 1}},
+                main_product = "stone",
+                enabled = false
+            }
+        })
+    end
+
+    -- hydroclassifier
+    if data.raw["recipe-category"]["hydroclassifier"] then
+        data:extend({ -- 注册石矿
+            {
+                type = "recipe",
+                name = "gravel-hydroclassify",
+                order = "a",
+                category = "hydroclassifier",
+                energy_required = 4,
+                ingredients = {
+                    {type = "item", name = "gravel", amount = 2},
+                    {type = "fluid", name = "dirty-water-light", amount = 200}
+                },
                 results = {{type = "item", name = "stone", amount = 1}},
                 main_product = "stone",
                 enabled = false

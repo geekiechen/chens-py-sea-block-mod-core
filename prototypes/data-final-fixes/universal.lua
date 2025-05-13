@@ -107,6 +107,12 @@ if settings.startup["enable-hard-mode"].value then
         }
     end
 
+    -- 修复 moss-processing 的问题
+    if data.raw.technology["moss-processing"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "gravel-hydroclassify"})
+    end
+
     -- 修复配方的问题
     -- 修复 early-copper-ore 的问题
     if data.raw.recipe["early-copper-ore"] then
@@ -119,7 +125,7 @@ if settings.startup["enable-hard-mode"].value then
             type = "item",
             name = "gravel",
             amount = 1,
-            probability = 0.5
+            probability = 0.3
         })
     end
 
@@ -129,7 +135,7 @@ if settings.startup["enable-hard-mode"].value then
             type = "item",
             name = "gravel",
             amount = 1,
-            probability = 0.5
+            probability = 0.3
         })
     end
 
