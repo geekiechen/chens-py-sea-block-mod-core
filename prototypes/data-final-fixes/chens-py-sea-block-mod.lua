@@ -1,5 +1,23 @@
 -- Copyright (c) 2025 GeekieChen
 -- 此项目遵循 MIT 许可证，详见 LICENSE 文件。
+-- 修复设置的问题
+-- 修复 enable-hard-mode 的问题
+if settings.startup["enable-hard-mode"].value then
+    -- 修复科技的问题
+    -- 修复 moss-processing 的问题
+    if data.raw.technology["moss-processing"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "landfill"})
+    end
+else
+    -- 修复科技的问题
+    -- 修复 basic-resources 的问题
+    if data.raw.technology["basic-resources"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "landfill"})
+    end
+end
+
 -- 修复科技的问题
 -- 修复 landfill 的问题
 if data.raw.technology["landfill"] then
@@ -34,12 +52,6 @@ if data.raw.technology["landfill"] then
 
         data.raw.technology["landfill"] = nil
     end
-end
-
--- 修复 basic-resources 的问题
-if data.raw.technology["basic-resources"] then
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "landfill"})
 end
 
 -- 修复配方的问题

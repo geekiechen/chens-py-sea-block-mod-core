@@ -1,5 +1,176 @@
 -- Copyright (c) 2025 GeekieChen
 -- 此项目遵循 MIT 许可证，详见 LICENSE 文件。
+-- 修复设置的问题
+if settings.startup["enable-hard-mode"].value then
+    -- 修复模组的问题
+    -- 修复 pycoalprocessing 的问题
+    if mods["pycoalprocessing"] then
+        -- 修复科技的问题
+        -- 修复 crusher 的问题
+        if data.raw.technology["crusher"] then
+            for i = #data.raw.technology["crusher"].effects, 1, -1 do
+                local effect = data.raw.technology["crusher"].effects[i]
+                if effect.type == "unlock-recipe" and effect.recipe ==
+                    "gravel-saline-water" then
+                    table.remove(data.raw.technology["crusher"].effects, i)
+                    break
+                end
+            end
+        end
+
+        -- 修复 steam-power 的问题
+        if data.raw.technology["steam-power"] then
+            table.insert(data.raw.technology["steam-power"].effects,
+                         {type = "unlock-recipe", recipe = "washer"})
+        end
+
+        -- 修复 coal-processing-1 的问题
+        if data.raw.technology["coal-processing-1"] then
+            table.insert(data.raw.technology["coal-processing-1"].effects,
+                         {type = "unlock-recipe", recipe = "early-stone"})
+            table.insert(data.raw.technology["coal-processing-1"].effects,
+                         {type = "unlock-recipe", recipe = "pressured-water"})
+            table.insert(data.raw.technology["coal-processing-1"].effects,
+                         {type = "unlock-recipe", recipe = "vacuum-pump-mk01"})
+        end
+
+        -- 修复配方的问题
+        -- 修复 washer 的问题
+        if data.raw.recipe["washer"] then
+            data.raw.recipe["washer"].ingredients = {
+                {type = "item", name = "pipe", amount = 10},
+                {type = "item", name = "stone-brick", amount = 10},
+                {type = "item", name = "steam-engine", amount = 1},
+                {type = "item", name = "iron-plate", amount = 5}
+            }
+        end
+    end
+
+    -- 修复 pyfusionenergy 的问题
+    if mods["pyfusionenergy"] then
+        -- 修复科技的问题
+        -- 修复 fluid-pressurization 的问题
+        if data.raw.technology["fluid-pressurization"] then
+            for i = #data.raw.technology["fluid-pressurization"].effects, 1, -1 do
+                local effect = data.raw.technology["fluid-pressurization"]
+                                   .effects[i]
+                if effect.type == "unlock-recipe" and
+                    (effect.recipe == "vacuum-pump-mk01" or effect.recipe ==
+                        "pressured-water") then
+                    table.remove(data.raw.technology["fluid-pressurization"]
+                                     .effects, i)
+                end
+            end
+        end
+
+        -- 修复配方的问题
+        -- 修复 vacuum-pump-mk01 的问题
+        if data.raw.recipe["vacuum-pump-mk01"] then
+            for i = #data.raw.recipe["vacuum-pump-mk01"].ingredients, 1, -1 do
+                local ingredient = data.raw.recipe["vacuum-pump-mk01"]
+                                       .ingredients[i]
+                if ingredient.name == "steel-plate" then
+                    table.remove(
+                        data.raw.recipe["vacuum-pump-mk01"].ingredients, i)
+                    break
+                end
+            end
+        end
+    end
+
+    -- 修复 pyhightech 的问题
+    if mods["pyhightech"] then
+        -- 修复配方的问题
+        -- 修复 gravel-saline-water 的问题
+        if data.raw.recipe["gravel-saline-water"] then
+            data.raw.recipe["gravel-saline-water"].energy_required = 10
+            data.raw.recipe["gravel-saline-water"].ingredients = {
+                {type = "item", name = "gravel", amount = 5},
+                {type = "fluid", name = "water", amount = 100}
+            }
+            data.raw.recipe["gravel-saline-water"].results = {
+                {type = "fluid", name = "water-saline", amount = 50}
+            }
+        end
+    end
+
+    -- 修复科技的问题
+    -- 修复 basic-resources 的问题
+    if data.raw.technology["basic-resources"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "gravel-saline-water"})
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "gravel-to-stone"})
+
+        data.raw.technology["basic-resources"].localised_description = {
+            "technology-description.basic-resources-hard-mode"
+        }
+    end
+
+    -- 修复 moss-processing 的问题
+    if data.raw.technology["moss-processing"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "gravel-hydroclassify"})
+    end
+
+    -- 修复配方的问题
+    -- 修复 early-copper-ore 的问题
+    if data.raw.recipe["early-copper-ore"] then
+        data.raw.recipe["early-copper-ore"].ingredients = {
+            {type = "item", name = "sludge", amount = 1},
+            {type = "fluid", name = "water-saline", amount = 15}
+        }
+
+        table.insert(data.raw.recipe["early-copper-ore"].results, {
+            type = "item",
+            name = "gravel",
+            amount = 1,
+            probability = 0.3
+        })
+    end
+
+    -- 修复 early-iron-ore 的问题
+    if data.raw.recipe["early-iron-ore"] then
+        table.insert(data.raw.recipe["early-iron-ore"].results, {
+            type = "item",
+            name = "gravel",
+            amount = 1,
+            probability = 0.3
+        })
+    end
+
+    -- 修复 early-stone 的问题
+    if data.raw.recipe["early-stone"] then
+        data.raw.recipe["early-stone"].ingredients = {
+            {type = "item", name = "sludge", amount = 1},
+            {type = "fluid", name = "carbolic-oil", amount = 15}
+        }
+    end
+
+    -- 修复 early-raw-coal 的问题
+    if data.raw.recipe["early-raw-coal"] then
+        for i = #data.raw.recipe["early-raw-coal"].ingredients, 1, -1 do
+            local ingredient = data.raw.recipe["early-raw-coal"].ingredients[i]
+            if ingredient.name == "water" then
+                ingredient.name = "pressured-water"
+            end
+        end
+    end
+else
+    -- 修复科技的问题
+    -- 修复 basic-resources 的问题
+    if data.raw.technology["basic-resources"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "early-stone"})
+    end
+
+    -- 修复 moss-processing 的问题
+    if data.raw.technology["moss-processing"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "washer"})
+    end
+end
+
 -- 修复模组的问题
 -- 修复 pyalienlife 的问题
 if mods["pyalienlife"] then
@@ -768,8 +939,6 @@ if data.raw.technology["basic-resources"] then
                  {type = "unlock-recipe", recipe = "early-iron-ore"})
     table.insert(data.raw.technology["basic-resources"].effects,
                  {type = "unlock-recipe", recipe = "early-copper-ore"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "early-stone"})
 end
 
 -- 修复 moss-processing 的问题
@@ -786,8 +955,6 @@ if data.raw.technology["moss-processing"] then
                  {type = "unlock-recipe", recipe = "Moss-1"})
     table.insert(data.raw.technology["moss-processing"].effects,
                  {type = "unlock-recipe", recipe = "muddy-sludge"})
-    table.insert(data.raw.technology["moss-processing"].effects,
-                 {type = "unlock-recipe", recipe = "washer"})
 end
 
 -- 修复 log-processing 的问题
