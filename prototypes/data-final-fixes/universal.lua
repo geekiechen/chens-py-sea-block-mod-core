@@ -20,18 +20,32 @@ if settings.startup["enable-hard-mode"].value then
 
         -- 修复 steam-power 的问题
         if data.raw.technology["steam-power"] then
-            table.insert(data.raw.technology["steam-power"].effects,
-                         {type = "unlock-recipe", recipe = "washer"})
+            if data.raw.recipe["washer"] then
+                table.insert(data.raw.technology["steam-power"].effects,
+                             {type = "unlock-recipe", recipe = "washer"})
+            end
         end
 
         -- 修复 coal-processing-1 的问题
         if data.raw.technology["coal-processing-1"] then
-            table.insert(data.raw.technology["coal-processing-1"].effects,
-                         {type = "unlock-recipe", recipe = "early-stone"})
-            table.insert(data.raw.technology["coal-processing-1"].effects,
-                         {type = "unlock-recipe", recipe = "pressured-water"})
-            table.insert(data.raw.technology["coal-processing-1"].effects,
-                         {type = "unlock-recipe", recipe = "vacuum-pump-mk01"})
+            if data.raw.recipe["early-stone"] then
+                table.insert(data.raw.technology["coal-processing-1"].effects,
+                             {type = "unlock-recipe", recipe = "early-stone"})
+            end
+
+            if data.raw.recipe["pressured-water"] then
+                table.insert(data.raw.technology["coal-processing-1"].effects, {
+                    type = "unlock-recipe",
+                    recipe = "pressured-water"
+                })
+            end
+
+            if data.raw.recipe["vacuum-pump-mk01"] then
+                table.insert(data.raw.technology["coal-processing-1"].effects, {
+                    type = "unlock-recipe",
+                    recipe = "vacuum-pump-mk01"
+                })
+            end
         end
 
         -- 修复配方的问题
@@ -97,10 +111,17 @@ if settings.startup["enable-hard-mode"].value then
     -- 修复科技的问题
     -- 修复 basic-resources 的问题
     if data.raw.technology["basic-resources"] then
-        table.insert(data.raw.technology["basic-resources"].effects,
-                     {type = "unlock-recipe", recipe = "gravel-saline-water"})
-        table.insert(data.raw.technology["basic-resources"].effects,
-                     {type = "unlock-recipe", recipe = "gravel-to-stone"})
+        if data.raw.recipe["gravel-saline-water"] then
+            table.insert(data.raw.technology["basic-resources"].effects, {
+                type = "unlock-recipe",
+                recipe = "gravel-saline-water"
+            })
+        end
+
+        if data.raw.recipe["gravel-to-stone"] then
+            table.insert(data.raw.technology["basic-resources"].effects,
+                         {type = "unlock-recipe", recipe = "gravel-to-stone"})
+        end
 
         data.raw.technology["basic-resources"].localised_description = {
             "technology-description.basic-resources-hard-mode"
@@ -109,34 +130,42 @@ if settings.startup["enable-hard-mode"].value then
 
     -- 修复 moss-processing 的问题
     if data.raw.technology["moss-processing"] then
-        table.insert(data.raw.technology["moss-processing"].effects,
-                     {type = "unlock-recipe", recipe = "gravel-hydroclassify"})
+        if data.raw.recipe["gravel-hydroclassify"] then
+            table.insert(data.raw.technology["moss-processing"].effects, {
+                type = "unlock-recipe",
+                recipe = "gravel-hydroclassify"
+            })
+        end
     end
 
     -- 修复配方的问题
     -- 修复 early-copper-ore 的问题
     if data.raw.recipe["early-copper-ore"] then
+        if data.raw.item["gravel"] then
+            table.insert(data.raw.recipe["early-copper-ore"].results, {
+                type = "item",
+                name = "gravel",
+                amount = 1,
+                probability = 0.3
+            })
+        end
+
         data.raw.recipe["early-copper-ore"].ingredients = {
             {type = "item", name = "sludge", amount = 1},
             {type = "fluid", name = "water-saline", amount = 15}
         }
-
-        table.insert(data.raw.recipe["early-copper-ore"].results, {
-            type = "item",
-            name = "gravel",
-            amount = 1,
-            probability = 0.3
-        })
     end
 
     -- 修复 early-iron-ore 的问题
     if data.raw.recipe["early-iron-ore"] then
-        table.insert(data.raw.recipe["early-iron-ore"].results, {
-            type = "item",
-            name = "gravel",
-            amount = 1,
-            probability = 0.3
-        })
+        if data.raw.item["gravel"] then
+            table.insert(data.raw.recipe["early-iron-ore"].results, {
+                type = "item",
+                name = "gravel",
+                amount = 1,
+                probability = 0.3
+            })
+        end
     end
 
     -- 修复 early-stone 的问题
@@ -160,14 +189,18 @@ else
     -- 修复科技的问题
     -- 修复 basic-resources 的问题
     if data.raw.technology["basic-resources"] then
-        table.insert(data.raw.technology["basic-resources"].effects,
-                     {type = "unlock-recipe", recipe = "early-stone"})
+        if data.raw.recipe["early-stone"] then
+            table.insert(data.raw.technology["basic-resources"].effects,
+                         {type = "unlock-recipe", recipe = "early-stone"})
+        end
     end
 
     -- 修复 moss-processing 的问题
     if data.raw.technology["moss-processing"] then
-        table.insert(data.raw.technology["moss-processing"].effects,
-                     {type = "unlock-recipe", recipe = "washer"})
+        if data.raw.recipe["washer"] then
+            table.insert(data.raw.technology["moss-processing"].effects,
+                         {type = "unlock-recipe", recipe = "washer"})
+        end
     end
 end
 
@@ -256,44 +289,85 @@ if mods["pyalienlife"] then
 
     -- 修复 mining-with-fluid 的问题
     if data.raw.technology["mining-with-fluid"] then
-        table.insert(data.raw.technology["mining-with-fluid"].effects,
-                     {type = "unlock-recipe", recipe = "early-aluminium-ore"})
-        table.insert(data.raw.technology["mining-with-fluid"].effects,
-                     {type = "unlock-recipe", recipe = "early-tin-ore"})
-        table.insert(data.raw.technology["mining-with-fluid"].effects,
-                     {type = "unlock-recipe", recipe = "flotation-cell-mk00"})
+        if data.raw.recipe["early-aluminium-ore"] then
+            table.insert(data.raw.technology["mining-with-fluid"].effects, {
+                type = "unlock-recipe",
+                recipe = "early-aluminium-ore"
+            })
+        end
+
+        if data.raw.recipe["early-tin-ore"] then
+            table.insert(data.raw.technology["mining-with-fluid"].effects,
+                         {type = "unlock-recipe", recipe = "early-tin-ore"})
+        end
+
+        if data.raw.recipe["flotation-cell-mk00"] then
+            table.insert(data.raw.technology["mining-with-fluid"].effects, {
+                type = "unlock-recipe",
+                recipe = "flotation-cell-mk00"
+            })
+        end
     end
 
     -- 修复 glass 的问题
     if data.raw.technology["glass"] then
-        table.insert(data.raw.technology["glass"].effects,
-                     {type = "unlock-recipe", recipe = "leaching-station-mk00"})
-        table.insert(data.raw.technology["glass"].effects,
-                     {type = "unlock-recipe", recipe = "early-quartz-ore"})
+        if data.raw.recipe["leaching-station-mk00"] then
+            table.insert(data.raw.technology["glass"].effects, {
+                type = "unlock-recipe",
+                recipe = "leaching-station-mk00"
+            })
+        end
+
+        if data.raw.recipe["early-quartz-ore"] then
+            table.insert(data.raw.technology["glass"].effects,
+                         {type = "unlock-recipe", recipe = "early-quartz-ore"})
+        end
     end
 
     -- 修复 log-processing 的问题
     if data.raw.technology["log-processing"] then
-        table.insert(data.raw.technology["log-processing"].effects,
-                     {type = "unlock-recipe", recipe = "empty-planter-box"})
-        table.insert(data.raw.technology["log-processing"].effects,
-                     {type = "unlock-recipe", recipe = "planter-box"})
-        table.insert(data.raw.technology["log-processing"].effects,
-                     {type = "unlock-recipe", recipe = "fwf-mk01"})
-        table.insert(data.raw.technology["log-processing"].effects,
-                     {type = "unlock-recipe", recipe = "tree"})
-        table.insert(data.raw.technology["log-processing"].effects,
-                     {type = "unlock-recipe", recipe = "wood-seeds"})
-        table.insert(data.raw.technology["log-processing"].effects,
-                     {type = "unlock-recipe", recipe = "wood-seedling"})
-        table.insert(data.raw.technology["log-processing"].effects,
-                     {type = "unlock-recipe", recipe = "log1"})
+        if data.raw.recipe["empty-planter-box"] then
+            table.insert(data.raw.technology["log-processing"].effects,
+                         {type = "unlock-recipe", recipe = "empty-planter-box"})
+        end
+
+        if data.raw.recipe["planter-box"] then
+            table.insert(data.raw.technology["log-processing"].effects,
+                         {type = "unlock-recipe", recipe = "planter-box"})
+        end
+
+        if data.raw.recipe["fwf-mk01"] then
+            table.insert(data.raw.technology["log-processing"].effects,
+                         {type = "unlock-recipe", recipe = "fwf-mk01"})
+        end
+
+        if data.raw.recipe["tree"] then
+            table.insert(data.raw.technology["log-processing"].effects,
+                         {type = "unlock-recipe", recipe = "tree"})
+        end
+
+        if data.raw.recipe["wood-seeds"] then
+            table.insert(data.raw.technology["log-processing"].effects,
+                         {type = "unlock-recipe", recipe = "wood-seeds"})
+        end
+
+        if data.raw.recipe["wood-seedling"] then
+            table.insert(data.raw.technology["log-processing"].effects,
+                         {type = "unlock-recipe", recipe = "wood-seedling"})
+        end
+
+        if data.raw.recipe["log1"] then
+            table.insert(data.raw.technology["log-processing"].effects,
+                         {type = "unlock-recipe", recipe = "log1"})
+        end
     end
 
     -- 修复 seaweed-mk01 的问题
     if data.raw.technology["seaweed-mk01"] then
-        table.insert(data.raw.technology["seaweed-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-seaweed"})
+        if data.raw.recipe["early-seaweed"] then
+            table.insert(data.raw.technology["seaweed-mk01"].effects,
+                         {type = "unlock-recipe", recipe = "early-seaweed"})
+        end
     end
 
     -- 修复 moss-mk01 的问题
@@ -309,8 +383,10 @@ if mods["pyalienlife"] then
 
     -- 修复 sap-mk01 的问题
     if data.raw.technology["sap-mk01"] then
-        table.insert(data.raw.technology["sap-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-saps"})
+        if data.raw.recipe["early-saps"] then
+            table.insert(data.raw.technology["sap-mk01"].effects,
+                         {type = "unlock-recipe", recipe = "early-saps"})
+        end
     end
 
     -- 修复 soil-washing 的问题
@@ -327,8 +403,10 @@ if mods["pyalienlife"] then
     -- 修复配方的问题
     -- 修复 biofactory-mk01 的问题
     if data.raw.recipe["biofactory-mk01"] then
-        table.insert(data.raw.recipe["biofactory-mk01"].ingredients,
-                     {type = "item", name = "biofactory-mk00", amount = 1})
+        if data.raw.item["biofactory-mk00"] then
+            table.insert(data.raw.recipe["biofactory-mk01"].ingredients,
+                         {type = "item", name = "biofactory-mk00", amount = 1})
+        end
     end
 
     -- 修复 fwf-mk01 的问题
@@ -359,14 +437,20 @@ if mods["pyalternativeenergy"] then
     -- 修复科技的问题
     -- 修复 uranium-processing 的问题
     if data.raw.technology["uranium-processing"] then
-        table.insert(data.raw.technology["uranium-processing"].effects,
-                     {type = "unlock-recipe", recipe = "early-uranium-ore"})
+        if data.raw.recipe["early-uranium-ore"] then
+            table.insert(data.raw.technology["uranium-processing"].effects,
+                         {type = "unlock-recipe", recipe = "early-uranium-ore"})
+        end
     end
 
     -- 修复 antimony-mk01 的问题
     if data.raw.technology["antimony-mk01"] then
-        table.insert(data.raw.technology["antimony-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-antimonium-ore"})
+        if data.raw.recipe["early-antimonium-ore"] then
+            table.insert(data.raw.technology["antimony-mk01"].effects, {
+                type = "unlock-recipe",
+                recipe = "early-antimonium-ore"
+            })
+        end
     end
 
     -- 修复配方的问题
@@ -381,8 +465,10 @@ if mods["pypetroleumhandling"] then
     -- 修复科技的问题
     -- 修复 kerogen 的问题
     if data.raw.technology["kerogen"] then
-        table.insert(data.raw.technology["kerogen"].effects,
-                     {type = "unlock-recipe", recipe = "early-kerogen"})
+        if data.raw.recipe["early-kerogen"] then
+            table.insert(data.raw.technology["kerogen"].effects,
+                         {type = "unlock-recipe", recipe = "early-kerogen"})
+        end
     end
 
     -- 修复配方的问题
@@ -474,28 +560,43 @@ if mods["pyrawores"] then
     -- 修复科技的问题
     -- 修复 solder-mk01 的问题
     if data.raw.technology["solder-mk01"] then
-        table.insert(data.raw.technology["solder-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-lead-ore"})
-        table.insert(data.raw.technology["solder-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-zinc-ore"})
+        if data.raw.recipe["early-lead-ore"] then
+            table.insert(data.raw.technology["solder-mk01"].effects,
+                         {type = "unlock-recipe", recipe = "early-lead-ore"})
+        end
+
+        if data.raw.recipe["early-zinc-ore"] then
+            table.insert(data.raw.technology["solder-mk01"].effects,
+                         {type = "unlock-recipe", recipe = "early-zinc-ore"})
+        end
     end
 
     -- 修复 chromium-mk01 的问题
     if data.raw.technology["chromium-mk01"] then
-        table.insert(data.raw.technology["chromium-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-chromium-ore"})
+        if data.raw.recipe["early-chromium-ore"] then
+            table.insert(data.raw.technology["chromium-mk01"].effects, {
+                type = "unlock-recipe",
+                recipe = "early-chromium-ore"
+            })
+        end
     end
 
     -- 修复 alloys-mk01 的问题
     if data.raw.technology["alloys-mk01"] then
-        table.insert(data.raw.technology["alloys-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-titanium-ore"})
+        if data.raw.recipe["early-titanium-ore"] then
+            table.insert(data.raw.technology["alloys-mk01"].effects, {
+                type = "unlock-recipe",
+                recipe = "early-titanium-ore"
+            })
+        end
     end
 
     -- 修复 nickel-mk01 的问题
     if data.raw.technology["nickel-mk01"] then
-        table.insert(data.raw.technology["nickel-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "early-nickel-ore"})
+        if data.raw.recipe["early-nickel-ore"] then
+            table.insert(data.raw.technology["nickel-mk01"].effects,
+                         {type = "unlock-recipe", recipe = "early-nickel-ore"})
+        end
     end
 
     -- 修复 machines-mk02 的问题
@@ -512,8 +613,12 @@ if mods["pyrawores"] then
 
     -- 修复 machines-mk01 的问题
     if data.raw.technology["machines-mk01"] then
-        table.insert(data.raw.technology["machines-mk01"].effects,
-                     {type = "unlock-recipe", recipe = "leaching-station-mk01"})
+        if data.raw.recipe["leaching-station-mk01"] then
+            table.insert(data.raw.technology["machines-mk01"].effects, {
+                type = "unlock-recipe",
+                recipe = "leaching-station-mk01"
+            })
+        end
     end
 
     -- 修复配方的问题
@@ -529,17 +634,24 @@ if mods["pyrawores"] then
 
     -- 修复 flotation-cell-mk01 的问题
     if data.raw.recipe["flotation-cell-mk01"] then
-        table.insert(data.raw.recipe["flotation-cell-mk01"].ingredients,
-                     {type = "item", name = "flotation-cell-mk00", amount = 1})
+        if data.raw.item["flotation-cell-mk00"] then
+            table.insert(data.raw.recipe["flotation-cell-mk01"].ingredients, {
+                type = "item",
+                name = "flotation-cell-mk00",
+                amount = 1
+            })
+        end
     end
 
     -- 修复 leaching-station-mk01 的问题
     if data.raw.recipe["leaching-station-mk01"] then
-        table.insert(data.raw.recipe["leaching-station-mk01"].ingredients, {
-            type = "item",
-            name = "leaching-station-mk00",
-            amount = 1
-        })
+        if data.raw.item["leaching-station-mk00"] then
+            table.insert(data.raw.recipe["leaching-station-mk01"].ingredients, {
+                type = "item",
+                name = "leaching-station-mk00",
+                amount = 1
+            })
+        end
     end
 
     -- 修复 hydroclassifier-mk01 的问题
@@ -628,6 +740,29 @@ if mods["pycoalprocessing"] then
             end
         end
 
+        if data.raw.recipe["early-native-flora"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {type = "unlock-recipe", recipe = "early-native-flora"})
+        end
+
+        if data.raw.recipe["burner-inserter"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {type = "unlock-recipe", recipe = "burner-inserter"})
+        end
+
+        if data.raw.recipe["wooden-chest"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {type = "unlock-recipe", recipe = "wooden-chest"})
+        end
+
+        if data.raw.recipe["small-electric-pole"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {
+                type = "unlock-recipe",
+                recipe = "small-electric-pole"
+            })
+        end
+
         data.raw.technology["automation-science-pack"].research_trigger = {
             type = "craft-item",
             item = "log",
@@ -636,23 +771,19 @@ if mods["pycoalprocessing"] then
         data.raw.technology["automation-science-pack"].prerequisites = {
             "log-processing"
         }
-
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "early-native-flora"})
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "burner-inserter"})
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "wooden-chest"})
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "small-electric-pole"})
     end
 
     -- 修复 coal-processing-1 的问题
     if data.raw.technology["coal-processing-1"] then
-        table.insert(data.raw.technology["coal-processing-1"].effects,
-                     {type = "unlock-recipe", recipe = "early-raw-coal"})
-        table.insert(data.raw.technology["coal-processing-1"].effects,
-                     {type = "unlock-recipe", recipe = "organic-fuel"})
+        if data.raw.recipe["early-raw-coal"] then
+            table.insert(data.raw.technology["coal-processing-1"].effects,
+                         {type = "unlock-recipe", recipe = "early-raw-coal"})
+        end
+
+        if data.raw.recipe["organic-fuel"] then
+            table.insert(data.raw.technology["coal-processing-1"].effects,
+                         {type = "unlock-recipe", recipe = "organic-fuel"})
+        end
     end
 
     -- 修复 steam-power 的问题
@@ -666,36 +797,62 @@ if mods["pycoalprocessing"] then
             end
         end
 
-        data.raw.technology["steam-power"].prerequisites = {"basic-resources"}
+        if data.raw.recipe["biofactory-mk00"] then
+            table.insert(data.raw.technology["steam-power"].effects,
+                         {type = "unlock-recipe", recipe = "biofactory-mk00"})
+        end
 
-        table.insert(data.raw.technology["steam-power"].effects,
-                     {type = "unlock-recipe", recipe = "biofactory-mk00"})
-        table.insert(data.raw.technology["steam-power"].effects,
-                     {type = "unlock-recipe", recipe = "hydroclassifier-mk00"})
-        table.insert(data.raw.technology["steam-power"].effects,
-                     {type = "unlock-recipe", recipe = "evaporator-mk00"})
+        if data.raw.recipe["hydroclassifier-mk00"] then
+            table.insert(data.raw.technology["steam-power"].effects, {
+                type = "unlock-recipe",
+                recipe = "hydroclassifier-mk00"
+            })
+        end
+
+        if data.raw.recipe["evaporator-mk00"] then
+            table.insert(data.raw.technology["steam-power"].effects,
+                         {type = "unlock-recipe", recipe = "evaporator-mk00"})
+        end
+
+        data.raw.technology["steam-power"].prerequisites = {"basic-resources"}
     end
 
     -- 修复 niobium 的问题
     if data.raw.technology["niobium"] then
-        table.insert(data.raw.technology["niobium"].effects,
-                     {type = "unlock-recipe", recipe = "early-niobium-ore"})
+        if data.raw.recipe["early-niobium-ore"] then
+            table.insert(data.raw.technology["niobium"].effects,
+                         {type = "unlock-recipe", recipe = "early-niobium-ore"})
+        end
     end
 
     -- 修复 moss-processing 的问题
     if data.raw.technology["moss-processing"] then
-        table.insert(data.raw.technology["moss-processing"].effects,
-                     {type = "unlock-recipe", recipe = "soil"})
-        table.insert(data.raw.technology["moss-processing"].effects,
-                     {type = "unlock-recipe", recipe = "burner-mining-drill"})
-        table.insert(data.raw.technology["moss-processing"].effects,
-                     {type = "unlock-recipe", recipe = "soil-extractor-mk01"})
+        if data.raw.recipe["soil"] then
+            table.insert(data.raw.technology["moss-processing"].effects,
+                         {type = "unlock-recipe", recipe = "soil"})
+        end
+
+        if data.raw.recipe["burner-mining-drill"] then
+            table.insert(data.raw.technology["moss-processing"].effects, {
+                type = "unlock-recipe",
+                recipe = "burner-mining-drill"
+            })
+        end
+
+        if data.raw.recipe["soil-extractor-mk01"] then
+            table.insert(data.raw.technology["moss-processing"].effects, {
+                type = "unlock-recipe",
+                recipe = "soil-extractor-mk01"
+            })
+        end
     end
 
     -- 修复 steel-processing 的问题
     if data.raw.technology["steel-processing"] then
-        table.insert(data.raw.technology["steel-processing"].effects,
-                     {type = "unlock-recipe", recipe = "early-fish"})
+        if data.raw.recipe["early-fish"] then
+            table.insert(data.raw.technology["steel-processing"].effects,
+                         {type = "unlock-recipe", recipe = "early-fish"})
+        end
     end
 
     -- 修复配方的问题
@@ -729,8 +886,10 @@ if mods["pycoalprocessing"] then
 
     -- 修复 evaporator 的问题
     if data.raw.recipe["evaporator"] then
-        table.insert(data.raw.recipe["evaporator"].ingredients,
-                     {type = "item", name = "evaporator-mk00", amount = 1})
+        if data.raw.item["evaporator-mk00"] then
+            table.insert(data.raw.recipe["evaporator"].ingredients,
+                         {type = "item", name = "evaporator-mk00", amount = 1})
+        end
     end
 end
 
@@ -766,8 +925,12 @@ if mods["pyhightech"] then
     -- 修复科技的问题
     -- 修复 rare-earth-tech 的问题
     if data.raw.technology["rare-earth-tech"] then
-        table.insert(data.raw.technology["rare-earth-tech"].effects,
-                     {type = "unlock-recipe", recipe = "early-rare-earth-ore"})
+        if data.raw.recipe["early-rare-earth-ore"] then
+            table.insert(data.raw.technology["rare-earth-tech"].effects, {
+                type = "unlock-recipe",
+                recipe = "early-rare-earth-ore"
+            })
+        end
     end
 end
 
@@ -776,14 +939,20 @@ if mods["pyfusionenergy"] then
     -- 修复科技的问题
     -- 修复 boron 的问题
     if data.raw.technology["boron"] then
-        table.insert(data.raw.technology["boron"].effects,
-                     {type = "unlock-recipe", recipe = "early-raw-borax"})
+        if data.raw.recipe["early-raw-borax"] then
+            table.insert(data.raw.technology["boron"].effects,
+                         {type = "unlock-recipe", recipe = "early-raw-borax"})
+        end
     end
 
     -- 修复 molybdenum-processing 的问题
     if data.raw.technology["molybdenum-processing"] then
-        table.insert(data.raw.technology["molybdenum-processing"].effects,
-                     {type = "unlock-recipe", recipe = "early-molybdenum-ore"})
+        if data.raw.recipe["early-molybdenum-ore"] then
+            table.insert(data.raw.technology["molybdenum-processing"].effects, {
+                type = "unlock-recipe",
+                recipe = "early-molybdenum-ore"
+            })
+        end
     end
 end
 
@@ -792,10 +961,18 @@ if mods["wood-logistics"] then
     -- 修复科技的问题
     -- 修复 automation-science-pack 的问题
     if data.raw.technology["automation-science-pack"] then
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "wood-transport-belt"})
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "lumber"})
+        if data.raw.recipe["wood-transport-belt"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {
+                type = "unlock-recipe",
+                recipe = "wood-transport-belt"
+            })
+        end
+
+        if data.raw.recipe["lumber"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {type = "unlock-recipe", recipe = "lumber"})
+        end
     end
 
     -- 修复配方的问题
@@ -817,6 +994,19 @@ end
 
 -- 修复 bobtech 的问题
 if mods["bobtech"] then
+    -- 修复模组的问题
+    -- 修复 aai-industry 的问题
+    if not mods["aai-industry"] then
+        -- 修复科技的问题
+        -- 修复 steam-power 的问题
+        if data.raw.technology["steam-power"] then
+            if data.raw.recipe["steam-engine"] then
+                table.insert(data.raw.technology["steam-power"].effects,
+                             {type = "unlock-recipe", recipe = "steam-engine"})
+            end
+        end
+    end
+
     -- 修复科技的问题
     -- 修复 bob-electricity 的问题
     if data.raw.technology["bob-electricity"] then
@@ -842,7 +1032,9 @@ if mods["bobtech"] then
                                                data.raw.technology["bob-electricity"]
                                                    .prerequisites or {}) do
                         if not table.contains(tech.prerequisites, prerequisite) then
-                            table.insert(tech.prerequisites, prerequisite)
+                            if data.raw.technology[prerequisite] then
+                                table.insert(tech.prerequisites, prerequisite)
+                            end
                         end
                     end
                 end
@@ -877,7 +1069,9 @@ if mods["bobtech"] then
                                                data.raw.technology["bob-steam-engine-1"]
                                                    .prerequisites or {}) do
                         if not table.contains(tech.prerequisites, prerequisite) then
-                            table.insert(tech.prerequisites, prerequisite)
+                            if data.raw.technology[prerequisite] then
+                                table.insert(tech.prerequisites, prerequisite)
+                            end
                         end
                     end
                 end
@@ -889,16 +1083,18 @@ if mods["bobtech"] then
 
     -- 修复 automation-science-pack 的问题
     if data.raw.technology["automation-science-pack"] then
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "bob-burner-generator"})
-        table.insert(data.raw.technology["automation-science-pack"].effects,
-                     {type = "unlock-recipe", recipe = "bob-burner-lab"})
-    end
+        if data.raw.recipe["bob-burner-generator"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {
+                type = "unlock-recipe",
+                recipe = "bob-burner-generator"
+            })
+        end
 
-    -- 修复 steam-power 的问题
-    if data.raw.technology["steam-power"] then
-        table.insert(data.raw.technology["steam-power"].effects,
-                     {type = "unlock-recipe", recipe = "steam-engine"})
+        if data.raw.recipe["bob-burner-lab"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {type = "unlock-recipe", recipe = "bob-burner-lab"})
+        end
     end
 
     -- 修复配方的问题
@@ -908,63 +1104,251 @@ if mods["bobtech"] then
     end
 end
 
+-- 修复 aai-industry 的问题
+if mods["aai-industry"] then
+    -- 修复科技的问题
+    -- 修复 basic-wood-logistics 的问题
+    if data.raw.technology["basic-wood-logistics"] then
+        for i = #data.raw.technology["basic-wood-logistics"].effects, 1, -1 do
+            local effect =
+                data.raw.technology["basic-wood-logistics"].effects[i]
+            if effect.type == "unlock-recipe" then
+                table.remove(
+                    data.raw.technology["basic-wood-logistics"].effects, i)
+            end
+        end
+
+        if next(data.raw.technology["basic-wood-logistics"].effects or {}) ==
+            nil then
+            for _, tech in pairs(data.raw.technology) do
+                if tech.prerequisites and
+                    table.contains(tech.prerequisites, "basic-wood-logistics") then
+                    for i, prerequisite in ipairs(tech.prerequisites) do
+                        if prerequisite == "basic-wood-logistics" then
+                            table.remove(tech.prerequisites, i)
+                            break
+                        end
+                    end
+
+                    for _, prerequisite in ipairs(
+                                               data.raw.technology["basic-wood-logistics"]
+                                                   .prerequisites or {}) do
+                        if not table.contains(tech.prerequisites, prerequisite) then
+                            if data.raw.technology[prerequisite] then
+                                table.insert(tech.prerequisites, prerequisite)
+                            end
+                        end
+                    end
+                end
+            end
+
+            data.raw.technology["basic-wood-logistics"] = nil
+        end
+    end
+
+    -- 修复 burner-mechanics 的问题
+    if data.raw.technology["burner-mechanics"] then
+        for i = #data.raw.technology["burner-mechanics"].effects, 1, -1 do
+            local effect = data.raw.technology["burner-mechanics"].effects[i]
+            if effect.type == "unlock-recipe" then
+                table.remove(data.raw.technology["burner-mechanics"].effects, i)
+            end
+        end
+
+        if next(data.raw.technology["burner-mechanics"].effects or {}) == nil then
+            for _, tech in pairs(data.raw.technology) do
+                if tech.prerequisites and
+                    table.contains(tech.prerequisites, "burner-mechanics") then
+                    for i, prerequisite in ipairs(tech.prerequisites) do
+                        if prerequisite == "burner-mechanics" then
+                            table.remove(tech.prerequisites, i)
+                            break
+                        end
+                    end
+
+                    for _, prerequisite in ipairs(
+                                               data.raw.technology["burner-mechanics"]
+                                                   .prerequisites or {}) do
+                        if not table.contains(tech.prerequisites, prerequisite) then
+                            if data.raw.technology[prerequisite] then
+                                table.insert(tech.prerequisites, prerequisite)
+                            end
+                        end
+                    end
+                end
+            end
+
+            data.raw.technology["burner-mechanics"] = nil
+        end
+    end
+
+    -- 修复 automation-science-pack 的问题
+    if data.raw.technology["automation-science-pack"] then
+        if data.raw.recipe["burner-assembling-machine"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {
+                type = "unlock-recipe",
+                recipe = "burner-assembling-machine"
+            })
+        end
+
+        if data.raw.recipe["burner-lab"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {type = "unlock-recipe", recipe = "burner-lab"})
+        end
+
+        if data.raw.recipe["motor"] then
+            table.insert(data.raw.technology["automation-science-pack"].effects,
+                         {type = "unlock-recipe", recipe = "motor"})
+        end
+    end
+end
+
 -- 修复科技的问题
 -- 修复 basic-resources 的问题
 if data.raw.technology["basic-resources"] then
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "iron-stick"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "bolts"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "iron-gear-wheel"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "small-parts-01"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "copper-cable"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "inductor1-2"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "stone-furnace"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "iron-plate"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "copper-plate"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "stone-brick"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "pipe"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "pipe-to-ground"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "early-iron-ore"})
-    table.insert(data.raw.technology["basic-resources"].effects,
-                 {type = "unlock-recipe", recipe = "early-copper-ore"})
+    if data.raw.recipe["iron-stick"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "iron-stick"})
+    end
+
+    if data.raw.recipe["bolts"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "bolts"})
+    end
+
+    if data.raw.recipe["iron-gear-wheel"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "iron-gear-wheel"})
+    end
+
+    if data.raw.recipe["small-parts-01"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "small-parts-01"})
+    end
+
+    if data.raw.recipe["copper-cable"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "copper-cable"})
+    end
+
+    if data.raw.recipe["inductor1-2"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "inductor1-2"})
+    end
+
+    if data.raw.recipe["stone-furnace"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "stone-furnace"})
+    end
+
+    if data.raw.recipe["iron-plate"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "iron-plate"})
+    end
+
+    if data.raw.recipe["copper-plate"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "copper-plate"})
+    end
+
+    if data.raw.recipe["stone-brick"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "stone-brick"})
+    end
+
+    if data.raw.recipe["pipe"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "pipe"})
+    end
+
+    if data.raw.recipe["pipe-to-ground"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "pipe-to-ground"})
+    end
+
+    if data.raw.recipe["early-iron-ore"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "early-iron-ore"})
+    end
+
+    if data.raw.recipe["early-copper-ore"] then
+        table.insert(data.raw.technology["basic-resources"].effects,
+                     {type = "unlock-recipe", recipe = "early-copper-ore"})
+    end
 end
 
 -- 修复 moss-processing 的问题
 if data.raw.technology["moss-processing"] then
-    data.raw.technology["moss-processing"].prerequisites = {"steam-power"}
+    if data.raw.recipe["early-moss"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "early-moss"})
+    end
 
-    table.insert(data.raw.technology["moss-processing"].effects,
-                 {type = "unlock-recipe", recipe = "early-moss"})
-    table.insert(data.raw.technology["moss-processing"].effects,
-                 {type = "unlock-recipe", recipe = "early-carbon-dioxide"})
-    table.insert(data.raw.technology["moss-processing"].effects,
-                 {type = "unlock-recipe", recipe = "moss-farm-mk01"})
-    table.insert(data.raw.technology["moss-processing"].effects,
-                 {type = "unlock-recipe", recipe = "Moss-1"})
-    table.insert(data.raw.technology["moss-processing"].effects,
-                 {type = "unlock-recipe", recipe = "muddy-sludge"})
+    if data.raw.recipe["early-carbon-dioxide"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "early-carbon-dioxide"})
+    end
+
+    if data.raw.recipe["moss-farm-mk01"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "moss-farm-mk01"})
+    end
+
+    if data.raw.recipe["Moss-1"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "Moss-1"})
+    end
+
+    if data.raw.recipe["muddy-sludge"] then
+        table.insert(data.raw.technology["moss-processing"].effects,
+                     {type = "unlock-recipe", recipe = "muddy-sludge"})
+    end
+
+    data.raw.technology["moss-processing"].prerequisites = {"steam-power"}
 end
 
 -- 修复 log-processing 的问题
 if data.raw.technology["log-processing"] then
-    data.raw.technology["log-processing"].prerequisites = {"moss-processing"}
+    if data.raw.recipe["early-log"] then
+        table.insert(data.raw.technology["log-processing"].effects,
+                     {type = "unlock-recipe", recipe = "early-log"})
+    end
 
-    table.insert(data.raw.technology["log-processing"].effects,
-                 {type = "unlock-recipe", recipe = "early-log"})
-    table.insert(data.raw.technology["log-processing"].effects,
-                 {type = "unlock-recipe", recipe = "log-wood"})
-    table.insert(data.raw.technology["log-processing"].effects,
-                 {type = "unlock-recipe", recipe = "botanical-nursery"})
+    if data.raw.recipe["log-wood"] then
+        table.insert(data.raw.technology["log-processing"].effects,
+                     {type = "unlock-recipe", recipe = "log-wood"})
+    end
+
+    if data.raw.recipe["botanical-nursery"] then
+        table.insert(data.raw.technology["log-processing"].effects,
+                     {type = "unlock-recipe", recipe = "botanical-nursery"})
+    end
+
+    data.raw.technology["log-processing"].prerequisites = {"moss-processing"}
 end
+
+local function print_dependency_chain(tech_name, visited)
+    visited = visited or {}
+    if visited[tech_name] then return end
+    visited[tech_name] = true
+
+    local tech = data.raw.technology[tech_name]
+    if not tech then
+        log("科技 " .. tech_name .. " 不存在")
+        return
+    end
+
+    log("科技：" .. tech_name)
+    if tech.prerequisites and #tech.prerequisites > 0 then
+        log("  前置科技: " .. table.concat(tech.prerequisites, ", "))
+        for _, pre in ipairs(tech.prerequisites) do
+            print_dependency_chain(pre, visited)
+        end
+    else
+        log("  无前置科技")
+    end
+end
+
+-- 从 logistic-science-pack 开始
+print_dependency_chain("logistic-science-pack")

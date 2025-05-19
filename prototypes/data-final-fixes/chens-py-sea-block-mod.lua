@@ -6,15 +6,19 @@ if settings.startup["enable-hard-mode"].value then
     -- 修复科技的问题
     -- 修复 moss-processing 的问题
     if data.raw.technology["moss-processing"] then
-        table.insert(data.raw.technology["moss-processing"].effects,
-                     {type = "unlock-recipe", recipe = "landfill"})
+        if data.raw.recipe["landfill"] then
+            table.insert(data.raw.technology["moss-processing"].effects,
+                         {type = "unlock-recipe", recipe = "landfill"})
+        end
     end
 else
     -- 修复科技的问题
     -- 修复 basic-resources 的问题
     if data.raw.technology["basic-resources"] then
-        table.insert(data.raw.technology["basic-resources"].effects,
-                     {type = "unlock-recipe", recipe = "landfill"})
+        if data.raw.recipe["landfill"] then
+            table.insert(data.raw.technology["basic-resources"].effects,
+                         {type = "unlock-recipe", recipe = "landfill"})
+        end
     end
 end
 
@@ -44,7 +48,9 @@ if data.raw.technology["landfill"] then
                                            data.raw.technology["landfill"]
                                                .prerequisites or {}) do
                     if not table.contains(tech.prerequisites, prerequisite) then
-                        table.insert(tech.prerequisites, prerequisite)
+                        if data.raw.recipe[prerequisite] then
+                            table.insert(tech.prerequisites, prerequisite)
+                        end
                     end
                 end
             end
