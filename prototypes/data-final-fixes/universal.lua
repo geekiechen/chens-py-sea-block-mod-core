@@ -128,16 +128,6 @@ if settings.startup["enable-hard-mode"].value then
         }
     end
 
-    -- 修复 moss-processing 的问题
-    if data.raw.technology["moss-processing"] then
-        if data.raw.recipe["gravel-hydroclassify"] then
-            table.insert(data.raw.technology["moss-processing"].effects, {
-                type = "unlock-recipe",
-                recipe = "gravel-hydroclassify"
-            })
-        end
-    end
-
     -- 修复配方的问题
     -- 修复 early-copper-ore 的问题
     if data.raw.recipe["early-copper-ore"] then
@@ -564,11 +554,6 @@ if mods["pyrawores"] then
             table.insert(data.raw.technology["solder-mk01"].effects,
                          {type = "unlock-recipe", recipe = "early-lead-ore"})
         end
-
-        if data.raw.recipe["early-zinc-ore"] then
-            table.insert(data.raw.technology["solder-mk01"].effects,
-                         {type = "unlock-recipe", recipe = "early-zinc-ore"})
-        end
     end
 
     -- 修复 chromium-mk01 的问题
@@ -931,6 +916,12 @@ if mods["pyhightech"] then
                 recipe = "early-rare-earth-ore"
             })
         end
+    end
+
+    -- 修复 electronics 的问题
+    if data.raw.recipe["early-zinc-ore"] then
+        table.insert(data.raw.technology["electronics"].effects,
+                     {type = "unlock-recipe", recipe = "early-zinc-ore"})
     end
 end
 

@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.10.0
+Date: 2025-05-21
+  Changes:
+    - Adjusted recipe: gravel-to-stone.
+
+    - Removed recipe: gravel-hydroclassify.
+
+    - Adjusted technology: moss-processing.
+---------------------------------------------------------------------------------------------------
 Version: 0.9.0
 Date: 2025-05-19
   Changes:

@@ -1,7 +1,7 @@
 {
     "name": "chens-py-sea-block-mod-core",
-    "version": "0.9.0",
-    "title": "Chens Pyanodon Sea Block Mod (core)",
+    "version": "0.10.0",
+    "title": "Chens Pyanodon Sea Block Mod (Core)",
     "author": "GeekieChen",
     "dependencies": [
         "chens-modpack-py-auxiliary-others"
