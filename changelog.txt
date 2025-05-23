@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.10.2
+Date: 2025-05-23
+  Changes:
+    - Fixed issues of localization again.
+
+    - [chens-modpack-py-auxiliary-others]:
+      - [aai-industry]:
+        - Adjusted technology: automation-science-pack.
+        - Adjusted technology: moss-processing.
+---------------------------------------------------------------------------------------------------
 Version: 0.10.1
 Date: 2025-05-22
   Changes:

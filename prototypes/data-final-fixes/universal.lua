@@ -1187,9 +1187,12 @@ if mods["aai-industry"] then
             table.insert(data.raw.technology["automation-science-pack"].effects,
                          {type = "unlock-recipe", recipe = "burner-lab"})
         end
+    end
 
+    -- 修复 moss-processing 的问题
+    if data.raw.technology["moss-processing"] then
         if data.raw.recipe["motor"] then
-            table.insert(data.raw.technology["automation-science-pack"].effects,
+            table.insert(data.raw.technology["moss-processing"].effects,
                          {type = "unlock-recipe", recipe = "motor"})
         end
     end
