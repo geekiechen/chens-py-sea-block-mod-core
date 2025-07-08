@@ -556,6 +556,14 @@ if mods["pyrawores"] then
         end
     end
 
+    -- 修复 nexelit-mk01 的问题
+    if data.raw.technology["nexelit-mk01"] then
+        if data.raw.recipe["early-nexelit-ore"] then
+            table.insert(data.raw.technology["nexelit-mk01"].effects,
+                         {type = "unlock-recipe", recipe = "early-nexelit-ore"})
+        end
+    end
+
     -- 修复 chromium-mk01 的问题
     if data.raw.technology["chromium-mk01"] then
         if data.raw.recipe["early-chromium-ore"] then

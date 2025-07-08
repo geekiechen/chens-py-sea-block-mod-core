@@ -364,6 +364,20 @@ if mods["chens-modpack-py-auxiliary-others"] then
                 results = {{type = "item", name = "molybdenum-ore", amount = 1}},
                 main_product = "molybdenum-ore",
                 enabled = false
+            }, -- 注册天然蓝坷垃
+            {
+                type = "recipe",
+                name = "early-nexelit-ore",
+                order = "a",
+                category = "leaching",
+                energy_required = 6,
+                ingredients = {
+                    {type = "item", name = "sludge", amount = 1},
+                    {type = "fluid", name = "coal-gas", amount = 50}
+                },
+                results = {{type = "item", name = "nexelit-ore", amount = 1}},
+                main_product = "nexelit-ore",
+                enabled = false
             }
         })
     end
